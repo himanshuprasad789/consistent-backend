@@ -32,7 +32,7 @@ app.use("/auth", router);
 app.use("/habits", verifyToken, habitRoute);
 mongoose
   .connect(
-    "mongodb+srv://prasadhimanshu789:bl6MYfdpTXzfdsQB@cluster0.dsuptde.mongodb.net/?retryWrites=true&w=majority"
+    process.env.DB_URL
   )
   .then(() => {
     console.log("connected to db");
