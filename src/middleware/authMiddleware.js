@@ -6,8 +6,7 @@ function verifyToken(req, res, next) {
     const authHeader =  req.cookies.accessToken;
     if (authHeader) {
         const token =  req.cookies.accessToken;
-        // console.log(token)
-    //   const token = authHeader.split(" ")[1];
+
        jwt.verify(token, secretKey, (err, decoded) => {
         if (err) {
           return res.sendStatus(403);

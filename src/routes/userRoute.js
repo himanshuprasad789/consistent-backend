@@ -53,9 +53,9 @@ router.post("/login", async (req, res) => {
 
   res
     .cookie("accessToken", accessToken, {
-      // httpOnly: true,
-      // secure: true,
-      // sameSite: "strict",
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24,
     })
     .json({ refreshToken,username});
@@ -63,8 +63,6 @@ router.post("/login", async (req, res) => {
 
 router.post("/refreshtoken", async (req, res) => {
   const refreshToken = req.body.refreshToken;
-  // console.log(req)
-  // res.status(200).json("hello")
   if(!refreshToken){
     return res.json({err:"No refresh Token provided"})
   }
@@ -84,9 +82,9 @@ router.post("/refreshtoken", async (req, res) => {
     const accessToken = generateAccessToken(decoded.userId);
     // const newRefreshToken = generateRefreshToken(decoded.userId);
     return res.cookie("accessToken", accessToken, {
-      // httpOnly: true,
-      // secure: true,
-      // sameSite: "strict",
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24,
     }).json({ refreshToken: refreshToken });
   });
