@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
     .cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      // sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24,
     })
     .json({ refreshToken,username});
@@ -84,7 +84,7 @@ router.post("/refreshtoken", async (req, res) => {
     return res.cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      // sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24,
     }).json({ refreshToken: refreshToken });
   });
