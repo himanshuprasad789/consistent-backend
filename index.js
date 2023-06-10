@@ -10,15 +10,15 @@ const router = require("./src/routes/userRoute");
 const verifyToken = require("./src/middleware/authMiddleware");
 
 const app = express();
-app.use(cookieParser());
-
-app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000", process.env.FRONTEND_URL],
+    origin: [ process.env.FRONTEND_URL],
     credentials: true,
   })
 );
+app.use(cookieParser());
+
+app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.method, req.path);
   next();

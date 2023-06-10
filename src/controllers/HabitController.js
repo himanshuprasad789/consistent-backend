@@ -31,8 +31,8 @@ const createHabit = async (req, res) => {
       { new: true }
       );
       console.log(Habit,updatedUser)
+      console.log(Habit, updatedUser);
     res.status(200).json(Habit);
-    // console.log(Habit, updatedUser);
   } catch (error) {
     console.log(error)
     res.status(400).json({ error: error.message });
