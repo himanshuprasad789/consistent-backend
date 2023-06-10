@@ -9,13 +9,12 @@ const getHabits = async (req, res) => {
     const user = await UserModel.findById(userId).populate("habits");
     if (user === null) res.status(200).json([]);
     const populatedHabits = user.habits;
+    console.log(populatedHabits);
     res.status(200).json(populatedHabits);
   } catch (err) {
     console.log(err);
     res.json({err});
   }
-
-  // console.log(populatedHabits);
 };
 
 // post a workout
@@ -30,10 +29,12 @@ const createHabit = async (req, res) => {
       userId,
       { $push: { habits: habitId } },
       { new: true }
-    );
+      );
+      console.log(Habit,updatedUser)
     res.status(200).json(Habit);
     // console.log(Habit, updatedUser);
   } catch (error) {
+    console.log(error)
     res.status(400).json({ error: error.message });
   }
 };
